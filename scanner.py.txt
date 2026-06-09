@@ -1,0 +1,14 @@
+ # networking library
+import socket 
+
+target = "127.0.0.1"  # target IP
+ports = [22, 80, 443, 8080]  # ports to scan
+
+for port in ports:  # loop through each port
+    s = socket.socket()  # create a new connection
+    result = s.connect_ex((target, port))  # try to connect — 0 means open
+    if result == 0:
+        print(f"Port {port} is OPEN")
+    else:
+        print(f"Port {port} is closed")
+    s.close()  # close the connection
